@@ -1,0 +1,114 @@
+.techstack-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-top: 240px; /* Space for My Techstack title */
+  margin-bottom: 50px;
+}
+
+.tech-category-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tech-category-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(94, 234, 212, 0.3); /* Accent color border */
+  box-shadow: 0 10px 30px rgba(94, 234, 212, 0.05);
+}
+
+.tech-category-card h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 16px;
+  color: #ffffff;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+.tech-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-item-tag {
+  font-size: 13px;
+  padding: 6px 12px;
+  background: rgba(94, 234, 212, 0.05);
+  border: 1px solid rgba(94, 234, 212, 0.15);
+  color: #5eead4; /* Accent color */
+  border-radius: 50px;
+  font-weight: 400;
+  transition: all 0.2s ease;
+}
+
+.tech-item-tag:hover {
+  background: rgba(94, 234, 212, 0.15);
+  transform: scale(1.05);
+}
+
+.tech-canvas-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none; /* Let users click and interact with cards */
+}
+
+/* Adjustments for the techstack section to handle flexible height */
+.techstack {
+  width: 100%;
+  position: relative;
+  overflow: clip;
+  height: auto !important; /* Override fixed height to fit grid */
+  min-height: 100vh;
+  margin-top: 100px;
+  margin-bottom: 0px;
+  padding-bottom: 100px;
+}
+
+.techstack h2 {
+  font-size: 80px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 80px;
+  left: 0;
+  font-weight: 400;
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+@media screen and (max-width: 900px) {
+  .techstack h2 {
+    font-size: 40px;
+    top: 50px;
+  }
+  .tech-grid {
+    margin-top: 140px;
+  }
+}

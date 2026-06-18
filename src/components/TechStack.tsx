@@ -181,27 +181,26 @@ const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const threshold = document
-        .getElementById("work")!
-        .getBoundingClientRect().top;
-      setIsActive(scrollY > threshold);
-    };
-    document.querySelectorAll(".header a").forEach((elem) => {
-      const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", () => {
-        const interval = setInterval(() => {
-          handleScroll();
-        }, 10);
-        setTimeout(() => {
-          clearInterval(interval);
-        }, 1000);
-      });
-    });
-    window.addEventListener("scroll", handleScroll);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsActive(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: "80px", // Pre-load 80px before entering viewport
+        threshold: 0.05,
+      }
+    );
+
+    const target = document.getElementById("techstack");
+    if (target) {
+      observer.observe(target);
+    }
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      if (target) {
+        observer.unobserve(target);
+      }
     };
   }, []);
   const materials = useMemo(() => {
